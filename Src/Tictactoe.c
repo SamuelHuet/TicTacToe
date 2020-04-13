@@ -1,23 +1,27 @@
 #include "Tictactoe.h"
 
-void print_grid(unsigned char line1[], unsigned char line2[], unsigned char line3[]){
+void init(Grid_struct *grid){
+  strcpy( grid->line1, "123");
+  strcpy( grid->line2, "456");
+  strcpy( grid->line3, "789");
+}
+
+void print_grid(Grid_struct *grid){
   printf("-------------------\r\n");
-  printf("|  %c  |  %c  |  %c  |\r\n", line1[0], line1[1], line1[2]);
+  printf("|  %c  |  %c  |  %c  |\r\n", grid->line1[0], grid->line1[1], grid->line1[2]);
   printf("-------------------\r\n");
-  printf("|  %c  |  %c  |  %c  |\r\n", line2[0], line2[1], line2[2]);
+  printf("|  %c  |  %c  |  %c  |\r\n", grid->line2[0], grid->line2[1], grid->line2[2]);
   printf("-------------------\r\n");
-  printf("|  %c  |  %c  |  %c  |\r\n", line3[0], line3[1], line3[2]);
+  printf("|  %c  |  %c  |  %c  |\r\n", grid->line3[0], grid->line3[1], grid->line3[2]);
   printf("-------------------\r\n");
 }
 
-unsigned char line1 [3] = {' ', ' ', ' '};
-unsigned char line2 [3] = {' ', ' ', ' '};
-unsigned char line3 [3] = {' ', ' ', ' '};
-
-
+Grid_struct grid;
 
 int main(int argc, char *argv[])
 {
-    print_grid(&line1, &line2, &line3);
+
+    init(&grid);
+    print_grid(&grid);
     return 0;
 }

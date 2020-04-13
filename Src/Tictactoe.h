@@ -2,5 +2,13 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <stdint.h>
+#include <string.h>
 
-void print_grid(unsigned char *line1, unsigned char *line2, unsigned char *line3);
+typedef struct{
+  unsigned char line1 [3];
+  unsigned char line2 [3];
+  unsigned char line3 [3];
+} Grid_struct;
+
+void init(Grid_struct *grid);
+void print_grid(Grid_struct *grid);
