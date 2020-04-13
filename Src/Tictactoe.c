@@ -16,12 +16,23 @@ void print_grid(Grid_struct *grid){
   printf("-------------------\r\n");
 }
 
+void play_as(char xo, unsigned char number, Grid_struct *grid){
+    grid->line1[number-1] = xo;
+}
+
 Grid_struct grid;
+const char x = 'X';
+const char o = 'O';
 
 int main(int argc, char *argv[])
 {
 
     init(&grid);
+    play_as(x, 7, &grid);
+    print_grid(&grid);
+    play_as(x, 8, &grid);
+    print_grid(&grid);
+    play_as(x, 9, &grid);
     print_grid(&grid);
     return 0;
 }
