@@ -13,3 +13,4 @@ typedef struct{
 void init(Grid_struct *grid);
 void print_grid(Grid_struct *grid);
 void play_as(char xo, unsigned char number, Grid_struct *grid);
+unsigned char Settings(char *player1, char *player2);

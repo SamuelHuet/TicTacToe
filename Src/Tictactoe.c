@@ -20,15 +20,24 @@ void play_as(char xo, unsigned char number, Grid_struct *grid){
     grid->line1[number-1] = xo;
 }
 
-void Settings(char *player1, char *player2){
+unsigned char Settings(char *player1, char *player2){
   char temp;
   printf("Select the player1 symbol then press [ENTER],\r\ntype '@' to let play an AI\r\n");
   fflush(stdin);
-  scanf("%c", &temp);
+  scanf("\n%c", &temp);
+  *player1 = temp;
 
   printf("Select the player2 symbol then press [ENTER],\r\ntype '@' to let play an AI\r\n");
   fflush(stdin);
   scanf("\n%c", &temp);
+  *player2 = temp;
+
+  if (*player1 == *player2){
+    printf("\r\n\r\n/!\\ You can't use the same symbol for both players !\r\n\r\n");
+    return 0;
+  }else{
+    return 1;
+  }
 }
 
 
@@ -41,9 +50,12 @@ int main(int argc, char *argv[])
 {
 
     init(&grid);
-    print_grid(&grid);
-    Settings(&player1, &player2);
-    fflush(stdout);
-    //printf("%s and %s", player1, player2);
+    while(Settings(&player1, &player2) == 0){
+      // Do nothing
+    }
+    // print_grid(&grid);
+    // Settings(&player1, &player2);
+    // fflush(stdout);
+    // printf("%c and %c", player1, player2);
     return 0;
 }
