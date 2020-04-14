@@ -35,7 +35,12 @@ unsigned char Settings(char *player1, char *player2){
   if (*player1 == *player2){
     printf("\r\n\r\n/!\\ You can't use the same symbol for both players !\r\n\r\n");
     return 0;
-  }else{
+  }
+  else if ((*player1 == '?') || (*player2 == '?')){
+    printf("\r\n\r\n/!\\ '?' is a special caracter, please do not use it !\r\n\r\n");
+    return 0;
+  }
+  else {
     return 1;
   }
 }
