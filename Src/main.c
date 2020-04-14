@@ -21,7 +21,7 @@ int main(int argc, char *argv[])
       sleep(1);
       if(player1 != '@'){
         do{
-          temp = get_box(1);
+          temp = get_box(1, &grid, &player1, &player2);
         } while (temp == 0);
       }
       play_as(&player1, temp, &grid, &player1, &player2);
@@ -33,7 +33,7 @@ int main(int argc, char *argv[])
       sleep(1);
       if(player2 != '@'){
         do{
-          temp = get_box(2);
+          temp = get_box(2, &grid, &player1, &player2);
         } while (temp == 0);
       }
       play_as(&player2, temp, &grid, &player1, &player2);

@@ -29,6 +29,7 @@ unsigned char play_as(unsigned char *xo, unsigned char number, Grid_struct *grid
 
     }
     if ((grid->line1[number-1] == *player1) || (grid->line1[number-1] == *player2)){
+      printf("EchENC\n");
       return 0;
     }
     grid->line1[number-1] = *xo;
@@ -102,7 +103,7 @@ unsigned char check_win(Grid_struct* grid, char* player1, char* player2, char* w
     // printf("%d =?= %d\r\n", grid->line1[1], (i+1));
     // printf("%d =?= %d\r\n", grid->line1[i], (i+49));
     if (grid->line1[i] == (i+49)){
-      printf("Encore de la place\n");
+      // printf("Encore de la place\n");
       remain_place = 1;
       break;
     }
@@ -120,7 +121,7 @@ unsigned char check_win(Grid_struct* grid, char* player1, char* player2, char* w
   }
 }
 
-unsigned char get_box(unsigned char player){
+unsigned char get_box(unsigned char player, Grid_struct *grid, char* player1, char* player2){
   int temp;
   unsigned char box;
   if (player == 1){
@@ -132,9 +133,14 @@ unsigned char get_box(unsigned char player){
   fflush(stdin);
   scanf("\n%d", &temp);
   if ((temp <1) || (temp >9)){
-      printf("\r\n\r\n/!\\ You can't write outside the grid !\r\n\r\n");
-      return 0;
-  }else{
+    printf("\r\n\r\n/!\\ You can't write outside the grid !\r\n\r\n");
+    return 0;
+  }
+  else if ((grid->line1[temp-1] == *player1) || (grid->line1[temp-1] == *player2)){
+    printf("\r\n\r\n/!\\ This box is already played !\r\n\r\n");
+    return 0;
+  }
+  else{
     box = (unsigned char) temp;
     return temp;
   }
