@@ -87,11 +87,14 @@ unsigned char check_win(Grid_struct* grid, char* player1, char* player2, char* w
   }
 
   //check diagonal
-  else if ((grid->line1[0] == grid->line2[1]) && (grid->line1[0] == grid->line3[3])){
+  // printf("grid->line1[0] = %d", grid->line1[0]);
+  // printf("grid->line2[1] = %d", grid->line1[0]);
+  // printf("grid->line1[0] = %d", grid->line1[0]);
+  else if ((grid->line1[0] == grid->line2[1]) && (grid->line1[0] == grid->line3[2])){
     *winner = grid->line1[0];
   }
-  else if ((grid->line1[3] == grid->line2[1]) && (grid->line1[3] == grid->line3[0])){
-    *winner = grid->line1[3];
+  else if ((grid->line1[2] == grid->line2[1]) && (grid->line1[2] == grid->line3[0])){
+    *winner = grid->line1[2];
   }
 
   //Remain empty box ?
