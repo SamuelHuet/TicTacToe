@@ -20,19 +20,30 @@ void play_as(char xo, unsigned char number, Grid_struct *grid){
     grid->line1[number-1] = xo;
 }
 
+void Settings(char *player1, char *player2){
+  char temp;
+  printf("Select the player1 symbol then press [ENTER],\r\ntype '@' to let play an AI\r\n");
+  fflush(stdin);
+  scanf("%c", &temp);
+
+  printf("Select the player2 symbol then press [ENTER],\r\ntype '@' to let play an AI\r\n");
+  fflush(stdin);
+  scanf("\n%c", &temp);
+}
+
+
+
 Grid_struct grid;
-const char x = 'X';
-const char o = 'O';
+char player1 = 'X';
+char player2 = 'O';
 
 int main(int argc, char *argv[])
 {
 
     init(&grid);
-    play_as(x, 7, &grid);
     print_grid(&grid);
-    play_as(x, 8, &grid);
-    print_grid(&grid);
-    play_as(x, 9, &grid);
-    print_grid(&grid);
+    Settings(&player1, &player2);
+    fflush(stdout);
+    //printf("%s and %s", player1, player2);
     return 0;
 }
