@@ -63,7 +63,7 @@ unsigned char Settings(char *player1, char *player2){
 unsigned char check_win(Grid_struct* grid, char* player1, char* player2, char* winner){
   unsigned char i;
   //char winner = "";
-  unsigned char remain_place = 1;
+  unsigned char remain_place = 0;
   //check lines
   if ((grid->line1[0] == grid->line1[1]) &&  (grid->line1[0] == grid->line1[2])){
     *winner = grid->line1[0];
@@ -99,13 +99,17 @@ unsigned char check_win(Grid_struct* grid, char* player1, char* player2, char* w
 
   //Remain empty box ?
   for(i=0; i<9; i++){
-    if (grid->line1[i] == (i+1)){
+    // printf("%d =?= %d\r\n", grid->line1[1], (i+1));
+    // printf("%d =?= %d\r\n", grid->line1[i], (i+49));
+    if (grid->line1[i] == (i+49)){
+      printf("Encore de la place\n");
       remain_place = 1;
       break;
     }
   }
 
   if (*winner != '?'){
+    printf("*winner != '?'\n");
     return 1;
   }
   else if (remain_place == 0){
