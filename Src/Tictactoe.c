@@ -8,13 +8,13 @@ void init(Grid_struct *grid){
 }
 
 void print_grid(Grid_struct *grid){
-  printf("-------------------\r\n");
+  printf("\r\n\r\n-------------------\r\n");
   printf("|  %c  |  %c  |  %c  |\r\n", grid->line1[0], grid->line1[1], grid->line1[2]);
   printf("-------------------\r\n");
   printf("|  %c  |  %c  |  %c  |\r\n", grid->line2[0], grid->line2[1], grid->line2[2]);
   printf("-------------------\r\n");
   printf("|  %c  |  %c  |  %c  |\r\n", grid->line3[0], grid->line3[1], grid->line3[2]);
-  printf("-------------------\r\n");
+  printf("-------------------\r\n\r\n");
 }
 
 void play_as(char xo, unsigned char number, Grid_struct *grid, char* player1, char* player2){
@@ -89,7 +89,7 @@ unsigned char check_win(Grid_struct* grid, char* player1, char* player2, char* w
     *winner = grid->line1[3];
   }
 
-  //Remain empty case ?
+  //Remain empty box ?
   for(i=0; i<9; i++){
     if (grid->line1[i] == (i+1)){
       remain_place = 1;
@@ -108,7 +108,20 @@ unsigned char check_win(Grid_struct* grid, char* player1, char* player2, char* w
   }
 }
 
-
+unsigned char get_box(void){
+  int temp;
+  unsigned char box;
+  printf("Select the number's box you want to play then press [ENTER]\r\n");
+  fflush(stdin);
+  scanf("\n%d", &temp);
+  if ((temp <1) || (temp >9)){
+      printf("\r\n\r\n/!\\ You can't write outside the grid !\r\n\r\n");
+      return 0;
+  }else{
+    box = (unsigned char) temp;
+    return temp;
+  }
+}
 
 Grid_struct grid;
 char player1 = 'X';
@@ -119,9 +132,14 @@ int main(int argc, char *argv[])
 {
 
     init(&grid);
-    while(Settings(&player1, &player2) == 0){
-      // Do nothing
-    }
+    get_box();
+    // while(Settings(&player1, &player2) == 0){
+    //   // Do nothing
+    // }
+
+    // while (1){
+    //
+    // }
     // print_grid(&grid);
     // Settings(&player1, &player2);
     // fflush(stdout);
