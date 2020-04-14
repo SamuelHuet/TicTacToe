@@ -24,12 +24,11 @@ unsigned char play_as(unsigned char *xo, unsigned char number, Grid_struct *grid
       //play as AI
       do{
         random = rand()%(10-1)+1;
-      } while((grid->line1[random] == *player1) || (grid->line1[random] == *player2));
+      } while((grid->line1[random-1] == *player1) || (grid->line1[random-1] == *player2));
       number = random;
 
     }
     if ((grid->line1[number-1] == *player1) || (grid->line1[number-1] == *player2)){
-      printf("EchENC\n");
       return 0;
     }
     grid->line1[number-1] = *xo;
@@ -63,7 +62,6 @@ unsigned char Settings(char *player1, char *player2){
 
 unsigned char check_win(Grid_struct* grid, char* player1, char* player2, char* winner){
   unsigned char i;
-  //char winner = "";
   unsigned char remain_place = 0;
   //check lines
   if ((grid->line1[0] == grid->line1[1]) &&  (grid->line1[0] == grid->line1[2])){
@@ -87,10 +85,6 @@ unsigned char check_win(Grid_struct* grid, char* player1, char* player2, char* w
     *winner = grid->line1[2];
   }
 
-  //check diagonal
-  // printf("grid->line1[0] = %d", grid->line1[0]);
-  // printf("grid->line2[1] = %d", grid->line1[0]);
-  // printf("grid->line1[0] = %d", grid->line1[0]);
   else if ((grid->line1[0] == grid->line2[1]) && (grid->line1[0] == grid->line3[2])){
     *winner = grid->line1[0];
   }
@@ -100,17 +94,13 @@ unsigned char check_win(Grid_struct* grid, char* player1, char* player2, char* w
 
   //Remain empty box ?
   for(i=0; i<9; i++){
-    // printf("%d =?= %d\r\n", grid->line1[1], (i+1));
-    // printf("%d =?= %d\r\n", grid->line1[i], (i+49));
     if (grid->line1[i] == (i+49)){
-      // printf("Encore de la place\n");
       remain_place = 1;
       break;
     }
   }
 
   if (*winner != '?'){
-    printf("*winner != '?'\n");
     return 1;
   }
   else if (remain_place == 0){
