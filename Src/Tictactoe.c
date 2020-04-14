@@ -17,7 +17,7 @@ void print_grid(Grid_struct *grid){
   printf("-------------------\r\n\r\n");
 }
 
-void play_as(char xo, unsigned char number, Grid_struct *grid, char* player1, char* player2){
+unsigned char play_as(char xo, unsigned char number, Grid_struct *grid, char* player1, char* player2){
   unsigned char random;
     if (xo == '@'){
       //play as AI
@@ -27,7 +27,11 @@ void play_as(char xo, unsigned char number, Grid_struct *grid, char* player1, ch
       number = random;
 
     }
+    if ((grid->line1[number-1] == *player1) || (grid->line1[number-1] == *player2)){
+      return 0;
+    }
     grid->line1[number-1] = xo;
+    return 1;
 }
 
 unsigned char Settings(char *player1, char *player2){
