@@ -40,11 +40,65 @@ unsigned char Settings(char *player1, char *player2){
   }
 }
 
+unsigned char check_win(Grid_struct* grid, char* player1, char* player2, char* winner){
+  unsigned char i;
+  //char winner = "";
+  unsigned char remain_place = 1;
+  //check lines
+  if ((grid->line1[0] == grid->line1[1]) &&  (grid->line1[0] == grid->line1[2])){
+    *winner = grid->line1[0];
+  }
+  else if ((grid->line2[0] == grid->line2[1]) &&  (grid->line2[0] == grid->line2[2])){
+    *winner = grid->line2[0];
+  }
+  else if ((grid->line3[0] == grid->line3[1]) &&  (grid->line3[0] == grid->line3[2])){
+    *winner = grid->line3[0];
+  }
+
+  //check columns
+  else if ((grid->line1[0] == grid->line2[0]) && (grid->line1[0] == grid->line3[0])){
+    *winner = grid->line1[0];
+  }
+  else if ((grid->line1[1] == grid->line2[1]) && (grid->line1[1] == grid->line3[1])){
+    *winner = grid->line1[1];
+  }
+  else if ((grid->line1[2] == grid->line2[2]) && (grid->line1[2] == grid->line3[2])){
+    *winner = grid->line1[2];
+  }
+
+  //check diagonal
+  else if ((grid->line1[0] == grid->line2[1]) && (grid->line1[0] == grid->line3[3])){
+    *winner = grid->line1[0];
+  }
+  else if ((grid->line1[3] == grid->line2[1]) && (grid->line1[3] == grid->line3[0])){
+    *winner = grid->line1[3];
+  }
+
+  //Remain empty case ?
+  for(i=0; i<9; i++){
+    if (grid->line1[i] == (i+1)){
+      remain_place = 1;
+      break;
+    }
+  }
+
+  if (*winner != '?'){
+    return 1;
+  }
+  else if (remain_place == 0){
+    return 1;
+  }
+  else{
+    return 0;
+  }
+}
+
 
 
 Grid_struct grid;
 char player1 = 'X';
 char player2 = 'O';
+char winner = '?';
 
 int main(int argc, char *argv[])
 {
