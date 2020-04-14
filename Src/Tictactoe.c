@@ -1,6 +1,7 @@
 #include "Tictactoe.h"
 
 void init(Grid_struct *grid){
+  srand(time(NULL));
   strcpy( grid->line1, "123");
   strcpy( grid->line2, "456");
   strcpy( grid->line3, "789");
@@ -16,7 +17,16 @@ void print_grid(Grid_struct *grid){
   printf("-------------------\r\n");
 }
 
-void play_as(char xo, unsigned char number, Grid_struct *grid){
+void play_as(char xo, unsigned char number, Grid_struct *grid, char* player1, char* player2){
+  unsigned char random;
+    if (xo == '@'){
+      //play as AI
+      do{
+        random = rand()%(10-1)+1;
+      } while((grid->line1[random] == *player1) || (grid->line1[random] == *player2));
+      number = random;
+
+    }
     grid->line1[number-1] = xo;
 }
 
