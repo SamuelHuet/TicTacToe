@@ -28,7 +28,7 @@ Une fois vos caractères créé, le jeu commence. Il faudra alors taper le numé
 |  7  |  8  |  9  |
 -------------------
 
-[PLAYER1] Select the number's box you want to play then press [ENTER]
+[PLAYER1] Select the box's number you want to play then press [ENTER]
 ```
 A la fin de la partie, si le match n'est pas nul, le gagnant sera affiché de la sorte :
 ```
@@ -46,7 +46,7 @@ typedef struct{
   unsigned char line3 [3];
 } Grid_struct;
 ```
-Le code d'organnise autour de quelques fonctions relativement simple. Je passe les deux première car elles n'ont rien d'intéréssant. La fonction `play_as()` permet de jouer un pion qu'il soit du joueur 1 ou 2. Elle gère également un IA qui placera le pion aléatoirement.
+Le code s'organnise autour de quelques fonctions relativement simple. Je passe les deux première car elles n'ont rien d'intéréssant. La fonction `play_as()` permet de jouer un pion qu'il soit du joueur 1 ou 2. Elle gère également un IA qui placera le pion aléatoirement.
 `Settings()` vous demandera quel pion vous souhaitez jouer, `check_win()` verifiera si la partie est finie, et qui l'a gagné et enfin `get_box()` vous demandera sur quelle case vous voulez jouer et vous refusera évidemment le coup si la case n'est pas libre.
 ```
 init()
@@ -58,21 +58,21 @@ get_box()
 ```
 -------
 ## Gant
-Un \# est équivalent à un jour de travail
+Un `#` est équivalent à un jour de travaile et `-` est équivalent à un jour non ouvré pour la tâche concerné.
 #### Prévisionnel
 ```
 GUI       #       
-Settings  ##
-Partie    ###
-IA        ####
+Settings  -#
+Partie    --#
+IA        ---#
 ```
 #### Réèl
 Une intégration en continue m'a permis de corriger les bugs chaque fois que je les percevais, et ainsi de gagner énormément de temps sur l'intégration. Ma motivation m'a égalemnent permis de boucler ce projet bien plus rapidement que ce que je l'avais prévu.
 ```
-GUI       #       
-Settings  ##
-Partie    ##
-IA        ##
+GUI       ##       
+Settings  -#
+Partie    -#
+IA        -#
 ```
 ## Difficultés
 Les principales difficultés venaient d'une part du fait que je n'avais as pratiqué le C depuis un certain temps, mais en plus, j'avais très peu pratiqué le C système. J'étais donc peu habitué aux fonctions `printf()` ou `scanf()` et à leur utilisations. Mais cela ne m'a pas empéché d'arriver à un résutat par tatonnement et en consultant les documentations.

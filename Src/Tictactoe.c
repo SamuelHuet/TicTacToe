@@ -119,7 +119,7 @@ unsigned char get_box(unsigned char player, Grid_struct *grid, char* player1, ch
   }else{
     printf("[PLAYER2] ");
   }
-  printf("Select the number's box you want to play then press [ENTER]\r\n");
+  printf("Select the box's number you want to play then press [ENTER]\r\n");
   fflush(stdin);
   scanf("\n%d", &temp);
   if ((temp <1) || (temp >9)){
