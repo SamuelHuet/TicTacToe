@@ -74,5 +74,6 @@ Settings  -#
 Partie    -#
 IA        -#
 ```
-## Difficultés
-Les principales difficultés venaient d'une part du fait que je n'avais as pratiqué le C depuis un certain temps, mais en plus, j'avais très peu pratiqué le C système. J'étais donc peu habitué aux fonctions `printf()` ou `scanf()` et à leur utilisations. Mais cela ne m'a pas empéché d'arriver à un résutat par tatonnement et en consultant les documentations.
+## Difficultés et apprentissage
+Les principales difficultés venaient d'une part du fait que je n'avais as pratiqué le C depuis un certain temps, mais en plus, j'avais très peu pratiqué le C système. J'étais donc peu habitué aux fonctions `printf()` ou `scanf()` et à leur utilisations. Mais cela ne m'a pas empéché d'arriver à un résutat par tatonnement et en consultant les documentations. 
+J'ai également choisis de réaliser ce projet avec Atom, donc sans IDE, en me servant de GCC en ligne de commande. J'ai donc dû me familiariser avec cette méthode. J'ai donc appris à ma familiariser avec gcc mais aussi avec le C système.
